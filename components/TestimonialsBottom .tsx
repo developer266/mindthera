@@ -5,6 +5,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ProvenExpertScript = dynamic(() => import("@/components/ProvenExpertScript"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: "300px", display: "flex", alignItems: "center", justifyContent: "center" }}>Loading reviews...</div>
+});
 
 const API_URL =
   `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/pages/68c10a17cb79fffc27944876?depth=2&draft=false&locale=undefined&trash=false`;
@@ -85,8 +91,38 @@ const TestimonialsBottom = () => {
           breakpoints={{ 768: { slidesPerView: 2 }, 1200: { slidesPerView: 3 } }}
           className="testimonials-cards"
         >
-          {data.items.map((t, idx) => (
-            <SwiperSlide key={idx}>
+          {/* First Testimonial */}
+          {data.items.length > 0 && (
+            <SwiperSlide key={0}>
+              <div className="testimonial-card">
+                {data.items[0].image && (
+                  <div className="testimonial-image-wrap">
+                    <Image
+                      src={data.items[0].image}
+                      alt={data.items[0].imageAlt}
+                      width={200}
+                      height={200}
+                      className="testimonial-image"
+                    />
+                  </div>
+                )}
+                <p className="testimonial-text" dangerouslySetInnerHTML={{ __html: data.items[0].textHtml }} />
+                <span className="testimonial-index">01</span>
+              </div>
+            </SwiperSlide>
+          )}
+
+          {/* ProvenExpert ProSeal Reviews Widget - Second Slide */}
+          <SwiperSlide key="proseal">
+            <div className="testimonial-card">
+              <ProvenExpertScript className="w-100" />
+              <span className="testimonial-index">{`0${data.items.length > 0 ? 2 : 1}`}</span>
+            </div>
+          </SwiperSlide>
+
+          {/* Remaining Testimonials */}
+          {data.items.slice(1).map((t, idx) => (
+            <SwiperSlide key={idx + 1}>
               <div className="testimonial-card">
                 {t.image && (
                   <div className="testimonial-image-wrap">
@@ -100,7 +136,7 @@ const TestimonialsBottom = () => {
                   </div>
                 )}
                 <p className="testimonial-text" dangerouslySetInnerHTML={{ __html: t.textHtml }} />
-                <span className="testimonial-index">{`0${idx + 1}`}</span>
+                <span className="testimonial-index">{`0${idx + 3}`}</span>
               </div>
             </SwiperSlide>
           ))}
