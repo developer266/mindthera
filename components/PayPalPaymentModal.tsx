@@ -182,11 +182,11 @@ export default function PayPalPaymentModal({
 
         <PayPalScriptProvider
           options={{
-            "client-id": config.clientId,
+            clientId: config.clientId,
             currency: config.currency,
             intent: "capture",
             components: "buttons",
-            "disable-funding": "venmo,paylater",
+            disableFunding: "venmo,paylater",
           }}
         >
           <PayPalButtonsInner
