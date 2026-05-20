@@ -10,11 +10,8 @@ interface BookingWidgetModalProps {
   title?: string;
 }
 
-//  const DEFAULT_IFRAME_URL =
-//   "https://appointer-admin-panel.vercel.app/widget?provider=f6f2c8e6-d590-4038-94e4-e2f55e280866&locale=de&iframe=true";
-
 const DEFAULT_IFRAME_URL =
-  "http://localhost:5173/widget?provider=3be1c87d-0807-435b-a344-d812024e8d62&locale=de&iframe=true";
+  "https://appointer-admin-panel.vercel.app/widget?provider=f6f2c8e6-d590-4038-94e4-e2f55e280866&locale=de&iframe=true";
 
 interface PayPalConfig {
   clientId: string;
