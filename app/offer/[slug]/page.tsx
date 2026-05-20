@@ -536,7 +536,7 @@ const OfferSlugPage = ({ params }: { params: { slug: string } }) => {
       ))}
 
       {/* Booking Modal */}
-      <BookingWidgetModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+      <BookingWidgetModal open={bookingOpen} onClose={() => setBookingOpen(false)} title={offer.title} />
     </>
   );
 };

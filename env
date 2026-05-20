@@ -1,6 +1,8 @@
 # Local environment variables for Next.js
+
 NEXT_PUBLIC_SITE_TITLE=Traumafrei
 NEXT_PUBLIC_SITE_DESCRIPTION=Professional psychology and counseling services to help you achieve mental wellness and personal growth
 
 # API Base URL for Payload CMS
-NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
+
+NEXT_PUBLIC_API_BASE_URL=https://kerstin-cms.we4php.com

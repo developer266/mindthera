@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import { getHomePageMetadata } from '@/lib/metadata';
+import { Toaster } from 'sonner';
 
 const jost = Jost({
   subsets: ['latin'],
@@ -57,6 +58,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <CookieConsent />
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
