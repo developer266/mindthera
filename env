@@ -6,3 +6,6 @@ NEXT_PUBLIC_SITE_DESCRIPTION=Professional psychology and counseling services to 
 # API Base URL for Payload CMS
 
 NEXT_PUBLIC_API_BASE_URL=https://kerstin-cms.we4php.com
+
+# Appointer widget base URL (production)
+NEXT_PUBLIC_APPOINTER_WIDGET_URL=https://appointer.annexlogics.in/widget?provider=3be1c87d-0807-435b-a344-d812024e8d62&locale=de&iframe=true

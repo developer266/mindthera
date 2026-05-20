@@ -10,7 +10,7 @@ interface BookingWidgetModalProps {
   title?: string;
 }
 
-// const DEFAULT_IFRAME_URL =
+//  const DEFAULT_IFRAME_URL =
 //   "https://appointer-admin-panel.vercel.app/widget?provider=f6f2c8e6-d590-4038-94e4-e2f55e280866&locale=de&iframe=true";
 
 const DEFAULT_IFRAME_URL =
@@ -72,7 +72,10 @@ export default function BookingWidgetModal({
         // DEV BYPASS: skip real PayPal and simulate a successful payment so the
         // full booking flow can be tested without sandbox credentials.
         // Remove this block (and the closing brace below) before going live.
-        if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_SKIP_PAYPAL === "true") {
+        if (
+          process.env.NODE_ENV === "development" &&
+          process.env.NEXT_PUBLIC_SKIP_PAYPAL === "true"
+        ) {
           console.warn("[DEV] Skipping PayPal — simulating payment success");
           setTimeout(() => {
             postToWidget({
@@ -161,7 +164,9 @@ export default function BookingWidgetModal({
           open={true}
           config={paypalConfig}
           onSuccess={(details) => {
-            toast.info("Payment captured — booking appointment…", { duration: 4000 });
+            toast.info("Payment captured — booking appointment…", {
+              duration: 4000,
+            });
             setPaypalConfig(null);
             postToWidget({ type: "PAYPAL_PAYMENT_COMPLETE", payload: details });
           }}
@@ -172,7 +177,8 @@ export default function BookingWidgetModal({
           }}
           onError={(err) => {
             console.error("PayPal error from parent modal:", err);
-            const msg = err instanceof Error ? err.message : JSON.stringify(err);
+            const msg =
+              err instanceof Error ? err.message : JSON.stringify(err);
             toast.error(`PayPal error: ${msg}`, { duration: 10000 });
             setPaypalConfig(null);
             postToWidget({ type: "PAYPAL_PAYMENT_ERROR" });
