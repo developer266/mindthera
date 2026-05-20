@@ -83,6 +83,7 @@ export default function BookingWidgetModal({
           return;
         }
 
+        
         setPaypalConfig(payload as PayPalConfig);
       }
     };
