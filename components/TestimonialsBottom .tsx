@@ -91,6 +91,14 @@ const TestimonialsBottom = () => {
           breakpoints={{ 768: { slidesPerView: 2 }, 1200: { slidesPerView: 3 } }}
           className="testimonials-cards"
         >
+          {/* ProvenExpert ProSeal Reviews Widget - First Slide */}
+          <SwiperSlide key="proseal">
+            <div className="testimonial-card">
+              <ProvenExpertScript className="w-100" />
+              <span className="testimonial-index">01</span>
+            </div>
+          </SwiperSlide>
+
           {/* First Testimonial */}
           {data.items.length > 0 && (
             <SwiperSlide key={0}>
@@ -107,18 +115,10 @@ const TestimonialsBottom = () => {
                   </div>
                 )}
                 <p className="testimonial-text" dangerouslySetInnerHTML={{ __html: data.items[0].textHtml }} />
-                <span className="testimonial-index">01</span>
+                <span className="testimonial-index">02</span>
               </div>
             </SwiperSlide>
           )}
-
-          {/* ProvenExpert ProSeal Reviews Widget - Second Slide */}
-          <SwiperSlide key="proseal">
-            <div className="testimonial-card">
-              <ProvenExpertScript className="w-100" />
-              <span className="testimonial-index">{`0${data.items.length > 0 ? 2 : 1}`}</span>
-            </div>
-          </SwiperSlide>
 
           {/* Remaining Testimonials */}
           {data.items.slice(1).map((t, idx) => (
